@@ -1,0 +1,51 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Problem Statement: 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Given a BST, and a reference to a Node x in the BST. Find the Inorder Successor of the given node in the BST.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Solution: 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Node * FindMin(Node * current){
+    while(current->left != NULL){
+        current = current->left;
+    }
+    return current;
+}
+
+class Solution{
+  public:
+    // returns the inorder successor of the Node x in BST (rooted at 'root')
+    Node * inOrderSuccessor(Node *root, Node *x)
+    {
+        //Your code here
+        Node * current = x;
+        
+        if(current == NULL)return NULL;
+        
+        if(current->right != NULL){
+            return FindMin(current->right);
+        }
+        else{
+            struct Node * successor = NULL;
+            struct Node * ancestor = root;
+            
+            while(ancestor != current){
+                if(current->data < ancestor->data){
+                    successor = ancestor;
+                    ancestor = ancestor->left;
+                }
+                else{
+                    ancestor= ancestor->right;
+                }
+            }
+            return successor;
+        }
+    }
+};
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
