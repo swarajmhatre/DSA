@@ -83,13 +83,15 @@ SinglyCL::SinglyCL()
     Last = NULL;
 }
 
-SinglyCL:: ~SinglyCL(){
+SinglyCL::~SinglyCL()
+{
     PNODE temp = First;
-    for(int i=0; i<= iSize; i++){
+    for (int i = 0; i <= iSize; i++)
+    {
         temp = First;
         First = First->next;
         delete temp;
-    }   
+    }
 }
 
 void SinglyCL ::InsertFirst(int iNo)
@@ -110,13 +112,16 @@ void SinglyCL ::InsertFirst(int iNo)
     iSize++;
 }
 
-void SinglyCL :: InsertLast(int iNo){
+void SinglyCL ::InsertLast(int iNo)
+{
     PNODE newn = new NODE(iNo);
-    if((First == NULL) && (Last == NULL)){
+    if ((First == NULL) && (Last == NULL))
+    {
         First = newn;
         Last = newn;
     }
-    else{
+    else
+    {
         newn->next = First;
         Last->next = newn;
         Last = newn;
@@ -124,41 +129,51 @@ void SinglyCL :: InsertLast(int iNo){
     iSize++;
 }
 
-void SinglyCL :: InsertAtPos(int iNo, int iPos){
-    if((iPos < 1)|| (iPos> iSize+1)){
-        cout<< "Invalid Input\n";
+void SinglyCL ::InsertAtPos(int iNo, int iPos)
+{
+    if ((iPos < 1) || (iPos > iSize + 1))
+    {
+        cout << "Invalid Input\n";
         return;
     }
 
-    if(iPos == 1){
+    if (iPos == 1)
+    {
         InsertFirst(iNo);
     }
-    else if(iPos == iSize+1){
+    else if (iPos == iSize + 1)
+    {
         InsertLast(iNo);
     }
-    else{
+    else
+    {
         PNODE newn = new NODE(iNo);
         PNODE temp = First;
-        for(int i; i< (iPos-1); i++){
-            temp= temp->next;
+        for (int i; i < (iPos - 1); i++)
+        {
+            temp = temp->next;
         }
         newn->next = temp->next;
         temp->next = newn;
+        iSize++;
     }
-    iSize++;
 }
 
-void SinglyCL:: DeleteFirst(){
-    if((First == NULL) && (Last == NULL)){
-        cout<< "Nothing to Delete...\n";
+void SinglyCL::DeleteFirst()
+{
+    if ((First == NULL) && (Last == NULL))
+    {
+        cout << "Nothing to Delete...\n";
         return;
     }
-    else if(First == Last){
+    else if (First == Last)
+    {
         delete First;
         First = NULL;
         Last = NULL;
     }
-    else{
+    else
+    {
         First = First->next;
         delete Last->next;
         Last->next = First;
@@ -166,19 +181,24 @@ void SinglyCL:: DeleteFirst(){
     iSize--;
 }
 
-void SinglyCL:: DeleteLast(){
-    if((First == NULL) && (Last == NULL)){
-        cout<<"Nothing to Delete...\n";
+void SinglyCL::DeleteLast()
+{
+    if ((First == NULL) && (Last == NULL))
+    {
+        cout << "Nothing to Delete...\n";
         return;
     }
-    else if(First == Last){
+    else if (First == Last)
+    {
         delete First;
         First = NULL;
         Last = NULL;
     }
-    else{
+    else
+    {
         PNODE temp = First;
-        for(int i =1; i< iSize-1; i++){
+        for (int i = 1; i < iSize - 1; i++)
+        {
             temp = temp->next;
         }
         temp->next = First;
@@ -188,8 +208,10 @@ void SinglyCL:: DeleteLast(){
     iSize--;
 }
 
-void SinglyCL :: DeleteAtPos(int iPos){
-    if((iPos < 1) || (iPos > iSize)){
+void SinglyCL ::DeleteAtPos(int iPos)
+{
+    if ((iPos < 1) || (iPos > iSize))
+    {
         cout << "Invalid Input";
         return;
     }
@@ -197,25 +219,29 @@ void SinglyCL :: DeleteAtPos(int iPos){
     {
         DeleteFirst();
     }
-    else if(iPos == iSize){
+    else if (iPos == iSize)
+    {
         DeleteLast();
     }
-    else{
+    else
+    {
         PNODE temp = First;
         PNODE tempX = NULL;
-        for(int i=1; i< iPos-1; i++){
+        for (int i = 1; i < iPos - 1; i++)
+        {
             temp = temp->next;
         }
         tempX = temp->next;
         temp->next = temp->next->next;
         delete tempX;
+        iSize--;
     }
 }
 
 int main()
 {
     SinglyCL obj;
-    
+
     obj.InsertFirst(51);
     obj.InsertFirst(21);
     obj.InsertFirst(11);
