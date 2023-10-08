@@ -7,5 +7,4 @@ If you'd like to contribute to this project, please follow these steps:
 3. Make your changes and commit them: `git commit -m "Add your changes here"`
 4. Push your changes to your fork: `git push origin feature/your-feature-name`
 5. Create a Pull Request in this repository.
-
-<h1>Make sure to star the repo for a successful contribution<h1>
+<h1>Make sure to star the repo for a successful contribution</h1>
